@@ -54,7 +54,7 @@
 
   /* ── Tick: update start time display ── */
   function tick() {
-    if (!startOverride.value) {
+    if (startOverride && !startOverride.value) {
       startDisplay.textContent = formatTimeShort(new Date());
     }
   }
