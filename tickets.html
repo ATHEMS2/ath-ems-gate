@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>نماذج التكتات | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #a00 0%, #d00 100%);">
+      <div class="lv-header-right">
+        <a href="admin.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">🎫</span>
+        <h1 class="lv-header-title">نماذج التكتات الجاهزة</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: Template Selection -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label">اختر الصيغة المطلوبة للرد</label>
+        <select id="ticket-template" class="lv-input rr-select" onchange="window.updateForm()">
+          <option value="ijaza_in">صيغة الإجازة الداخلية</option>
+          <option value="ijaza_out">صيغة الإجازة الخارجية</option>
+          <option value="return_in">العودة من إجازة داخلية</option>
+          <option value="return_out">العودة من إجازة خارجية</option>
+          <option value="ijaza_fail">الإجازة الداخلية لغير المؤهلين (المستوفين)</option>
+          <option value="accept_resig">قبول الإستقالة</option>
+          <option value="resig_trainee">الإستقالة للمتدرب - مستوى 1</option>
+          <option value="ignore">إهمال التكت</option>
+          <option value="remove_ban">إزالة منع التوظيف</option>
+          <option value="close_ticket">إنهاء التكت</option>
+          <option value="revive">طلب إنعاش</option>
+          <option value="report">إستلام الشكاوي</option>
+          <option value="deputation">قبول الإنتداب</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Row 2: dynamic days for deputation -->
+    <div class="lv-fields-row" id="deputation-days-row" style="display: none;">
+      <div class="lv-field">
+        <label class="lv-label">عدد أيام الإنتداب</label>
+        <input id="deputation-days" type="number" class="lv-input" placeholder="مثال: 5"/>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" style="background: linear-gradient(135deg, #cc0000, #ff0000); color: #fff; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);" onclick="window.issueTicket()">
+        <span>🖨️</span><span>توليد الصيغة</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyTicket()" disabled>
+        <span>📋</span><span>نسخ الصيغة</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div>
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصيغة الناتجة (جاهزة للنسخ)</span>
+      <button class="lv-output-copy-btn" onclick="window.copyTicket()">📋 نسخ الصيغة</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="tickets.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>القبول المبدئي | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #a00 0%, #d00 100%);">
+      <div class="lv-header-right">
+        <a href="appointments.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">📑</span>
+        <h1 class="lv-header-title">نموذج القبول المبدئي</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: اسم، آيدي، خبرة، عمر -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label">اسم المواطن</label>
+        <input id="ia-name" type="text" class="lv-input" placeholder="مثال: خالد العنزي"/>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label">الكوبي ايدي الديسكورد</label>
+        <input id="ia-id" type="text" class="lv-input" placeholder="معرف ديسكورد"/>
+      </div>
+    </div>
+    
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label">الخبرة</label>
+        <input id="ia-exp" type="text" class="lv-input" placeholder="مثال: 63"/>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label">العمر</label>
+        <input id="ia-age" type="text" class="lv-input" placeholder="مثال: 30 أو (غير واضح)"/>
+      </div>
+    </div>
+
+    <!-- Questions Grid -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label" style="font-size:0.85rem">الاسم مطابق في المقاطعة والديسكورد؟</label>
+        <select id="ia-q1" class="lv-input rr-select"><option value="نعم">نعم</option><option value="لا">لا</option></select>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label" style="font-size:0.85rem">هل يحمل مبلغ 150 ألف؟</label>
+        <select id="ia-q2" class="lv-input rr-select"><option value="نعم">نعم</option><option value="لا">لا</option></select>
+      </div>
+    </div>
+
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label" style="font-size:0.85rem">قرأ التنويهات والقوانين الخاصة؟</label>
+        <select id="ia-q3" class="lv-input rr-select"><option value="نعم">نعم</option><option value="لا">لا</option></select>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label" style="font-size:0.85rem">هل يتعهد على ذلك؟</label>
+        <select id="ia-q4" class="lv-input rr-select"><option value="نعم">نعم</option><option value="لا">لا</option></select>
+      </div>
+    </div>
+
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label" style="font-size:0.85rem">يحاسب دون إنذار إذا خالف القانون؟</label>
+        <select id="ia-q5" class="lv-input rr-select"><option value="نعم">نعم</option><option value="لا">لا</option></select>
+      </div>
+      <div class="lv-field" style="background: rgba(255, 204, 0, 0.05); padding:0.5rem; border-radius:6px; border:1px solid rgba(255,204,0,0.2);">
+        <label class="lv-label" style="color:#ffcc00; font-size:1.1rem; text-align:center;">النتيجة النهائية للمقابلة</label>
+        <select id="ia-status" class="lv-input rr-select" onchange="window.updateStatus()" style="font-weight:bold; text-align:center; color:#fff;">
+          <option value="accepted">مقبول في الهلال الأحمر</option>
+          <option value="rejected">مرفوض ⛔</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Rejection Reason -->
+    <div class="lv-fields-row" id="ia-reason-row" style="display:none; margin-top:0.5rem; background: rgba(255, 0, 0, 0.1); padding: 1rem; border-radius: 8px;">
+      <div class="lv-field" style="flex:1">
+        <label class="lv-label" style="color:#ff5555; text-align:center; font-size:1.2rem;">سبب الرفض</label>
+        <input id="ia-reason" type="text" class="lv-input" placeholder="مثال: العمر واضح أنه أصغر من الشروط..." style="border-color:#ff5555; text-align:center;"/>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions" style="margin-top: 2rem;">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" style="background: linear-gradient(135deg, #cc0000, #ff0000); color: #fff; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);" onclick="window.issueAcceptance()">
+        <span>🖨️</span><span>توليد الصيغة</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyAcceptance()" disabled>
+        <span>📋</span><span>نسخ الصيغة</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div>
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصيغة الناتجة (جاهزة للنسخ)</span>
+      <button class="lv-output-copy-btn" onclick="window.copyAcceptance()">📋 نسخ الصيغة</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text" style="font-family: inherit;"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="initial_acceptance.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>المكافآت والغرامات | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #a00 0%, #d00 100%);">
+      <div class="lv-header-right">
+        <a href="rewards_hub.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">⚖️</span>
+        <h1 class="lv-header-title">نموذج الإنذارات والغرامات</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: نوع الإنذار + السبب -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label">نوع الإنذار</label>
+        <select id="warning-type" class="lv-input rr-select" onchange="window.updateForm()">
+          <option value="شفهي">إنذار شفهي</option>
+          <option value="أول">إنذار أول</option>
+          <option value="ثاني">إنذار ثاني</option>
+          <option value="نهائي">إنذار نهائي</option>
+        </select>
+      </div>
+
+      <div class="lv-field">
+        <label class="lv-label">السبب</label>
+        <input id="reason" type="text" class="lv-input" placeholder="مثال: عدم الجدية بالميدان"/>
+      </div>
+    </div>
+
+    <!-- Row 2: الغرامة (conditional) -->
+    <div class="lv-fields-row" id="fine-row" style="display: none;">
+      <div class="lv-field">
+        <label class="lv-label">الغرامة (يدوي)</label>
+        <input id="fine-amount" type="text" class="lv-input" placeholder="مثال: 1,000,000"/>
+      </div>
+    </div>
+
+    <!-- Row 3: بيانات المسعف والاعتماد -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">🆔</span> ID المسعف</label>
+        <input id="paramedic-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+       <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">✍️</span> ID الاعتماد</label>
+        <input id="approver-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+    </div>
+
+    <!-- Checkbox Row -->
+    <div class="lv-fields-row" id="confirm-register-row" style="margin-top: 1rem; display: none;">
+      <div class="lv-field" style="flex-direction: row; align-items: center; background: rgba(255, 0, 0, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 0, 0, 0.2);">
+        <input type="checkbox" id="confirm-register" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #ff3333;"/>
+        <label for="confirm-register" class="lv-label" style="margin: 0; padding-right: 10px; font-weight: 600; cursor: pointer; color: #ff3333;">لا تنسى تسجل الغرامة بالجدول</label>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" onclick="window.issueWarning()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyWarning()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div>
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="window.copyWarning()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="rewards.js"></script>
+</body>
+</html>

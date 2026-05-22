@@ -1,0 +1,77 @@
+/* role_request.css */
+
+/* Header accent color — matches leave pages red */
+.rr-header {
+  background: linear-gradient(135deg, var(--red-deep) 0%, #8b0000 50%, var(--red-vivid) 100%) !important;
+}
+
+/* Select element styled to match inputs */
+.rr-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ff1e1e' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  padding-left: 2.5rem !important;
+  cursor: pointer;
+}
+.rr-select option {
+  background: #111;
+  color: #f5f5f5;
+  font-family: 'Cairo', sans-serif;
+}
+[data-theme="light"] .rr-select option {
+  background: #fff;
+  color: #111;
+}
+
+/* Auto reason display */
+.rr-auto-reason {
+  padding: .75rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-card);
+  background: var(--red-glow-soft);
+  color: var(--red-vivid);
+  font-family: 'Cairo', sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  transition: all var(--transition);
+  min-height: 2.6rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Type badge chips shown alongside the select */
+.rr-type-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .5rem;
+}
+.rr-chip {
+  padding: .22rem .7rem;
+  border-radius: 50px;
+  font-size: .74rem;
+  font-weight: 700;
+  font-family: 'Cairo', sans-serif;
+  border: 1px solid;
+  cursor: default;
+}
+.rr-chip-red  { background: rgba(255,30,30,.12); color: #ff6060; border-color: rgba(255,30,30,.3); }
+.rr-chip-blue { background: rgba(60,100,255,.12); color: #7090ff; border-color: rgba(60,100,255,.3); }
+.rr-chip-green{ background: rgba(0,180,80,.12);  color: #40cc80; border-color: rgba(0,180,80,.3);  }
+
+/* Selected type summary */
+.rr-type-summary {
+  margin-top: .5rem;
+  padding: .6rem 1rem;
+  border-radius: 10px;
+  background: rgba(60,100,255,.08);
+  border: 1px solid rgba(60,100,255,.18);
+  font-family: 'Cairo', sans-serif;
+  font-size: .82rem;
+  color: var(--text-secondary);
+  display: none;
+  transition: all var(--transition);
+}
+.rr-type-summary.visible { display: block; }

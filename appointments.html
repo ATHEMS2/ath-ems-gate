@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="تعيين وترقيات - بوابة الهلال الأحمر"/>
+  <title>تعيين وترقيات | الهلال الأحمر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="pages.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="logo-icon">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <span class="brand-title">شؤون الهلال الأحمر</span>
+    </div>
+    <div class="navbar-actions">
+      <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
+        <span class="theme-icon dark-icon">🌙</span>
+        <span class="theme-icon light-icon">☀️</span>
+        <span class="theme-label dark-label">الوضع الفاتح</span>
+        <span class="theme-label light-label">الوضع الداكن</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-hero" style="background: linear-gradient(135deg, rgba(204, 0, 0, 0.15) 0%, rgba(255, 0, 0, 0.05) 100%);">
+    <div class="page-hero-inner">
+      <a href="index.html" class="back-btn">
+        <span class="back-arrow">→</span>
+        <span>رجوع</span>
+      </a>
+      <div class="page-hero-text">
+        <div class="page-breadcrumb">الرئيسية / تعيين وترقيات</div>
+        <h1 class="page-title">
+          تعيين <span class="accent">وترقيات</span>
+        </h1>
+        <p class="page-sub">اختر سلسلة الإجراءات الخاصة بالقبول وتطوير الكفاءات</p>
+      </div>
+    </div>
+    <div class="page-hero-deco"></div>
+  </div>
+
+  <!-- SECTIONS GRID -->
+  <main class="page-main">
+    <div class="sections-grid">
+
+      <!-- تعيين دفعة جديدة -->
+      <a href="new_batch.html" class="section-card" id="sc-new-batch">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #ff3333; background: rgba(255, 0, 0, 0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 42 C14 32 34 32 34 42 M24 24 C18 24 18 14 24 14 C30 14 30 24 24 24 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M34 24 L42 24 M38 20 L38 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(255, 0, 0, 0.15); color: #ff6666;">متاح الآن</div>
+          <h2 class="sc-title">تعيين دفعة جديدة</h2>
+          <p class="sc-desc">إصدار قرارات الموافقة على الدفعات الجديدة وتحديد رتب ومسار المتدربين</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- نموذج القبول المبدئي -->
+      <a href="initial_acceptance.html" class="section-card" id="sc-initial-acceptance">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #ff3333; background: rgba(255, 0, 0, 0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12V36M12 24H36" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(255, 0, 0, 0.15); color: #ff6666;">جديد</div>
+          <h2 class="sc-title">نموذج القبول المبدئي</h2>
+          <p class="sc-desc">تقييم المسعفين المتقدمين للوظيفة وتسجيل إجاباتهم وقرار القبول المبدئي</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

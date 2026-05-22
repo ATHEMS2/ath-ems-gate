@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>إجازة خارجية | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="ext_leave.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <!-- Card Header -->
+    <div class="lv-card-header">
+      <div class="lv-header-right">
+        <a href="admin.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">✈️</span>
+        <h1 class="lv-header-title">نموذج إجازة خارجية</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Toggle -->
+    <div class="lv-fields-row lv-fields-row2" style="margin-bottom: 1rem;">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(255,162,0,0.05); width: 100%;">
+        <input type="checkbox" id="return-leave-check" onclick="toggleReturnMode()" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #ffa200;"/>
+        <label for="return-leave-check" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #ffcc88;">العودة من إجازة خارجية</label>
+      </div>
+    </div>
+
+    <!-- Fields Row: ID + عدد الأيام -->
+    <div class="lv-fields-row">
+
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">🆔</span> ID المسعف</label>
+        <input id="paramedic-id" type="text" class="lv-input" placeholder="معرّف ديسكورد المسعف"/>
+      </div>
+
+      <div class="lv-field" id="editor-field" style="display: none;">
+        <label class="lv-label"><span class="lv-licon">✍️</span> إعتماد (ID الخاص بك)</label>
+        <input id="editor-id" type="text" class="lv-input" placeholder="معرّفك لغرض التوقيع"/>
+      </div>
+
+      <div class="lv-field lv-field-xs" id="days-field">
+        <label class="lv-label"><span class="lv-licon">📅</span> عدد الأيام</label>
+        <input id="days" type="number" class="lv-input lv-input-num" placeholder="5" min="1" max="365" step="1"/>
+      </div>
+
+    </div>
+
+    <!-- Auto-calculated dates row -->
+    <div class="lv-fields-row lv-fields-row2 ext-dates-row">
+
+      <div class="lv-field lv-field-auto-date">
+        <label class="lv-label"><span class="lv-licon">🟢</span> من تاريخ</label>
+        <div class="ext-date-val" id="start-date-display">—</div>
+        <span class="lv-hint">تاريخ اليوم · توقيت السعودية</span>
+      </div>
+
+      <div class="ext-arrow">←</div>
+
+      <div class="lv-field lv-field-auto-date">
+        <label class="lv-label"><span class="lv-licon">🔴</span> إلى تاريخ</label>
+        <div class="ext-date-val" id="end-date-display">—</div>
+        <span class="lv-hint">يُحسب تلقائياً</span>
+      </div>
+
+    </div>
+
+    <!-- Confirm Checkbox -->
+    <div class="lv-fields-row lv-fields-row2">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(0,162,255,0.05);">
+        <input type="checkbox" id="role-request-check" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #00a2ff;"/>
+        <label for="role-request-check" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #cceeff;">لا تنسى طلب رول</label>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" onclick="issueExtLeave()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="copyExtLeave()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <!-- Error -->
+    <div class="lv-error" id="lv-error"></div>
+
+  </div><!-- /lv-card -->
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="copyExtLeave()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner"><p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p></div>
+</footer>
+
+<script src="app.js"></script>
+<script src="ext_leave.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>نماذج الانتداب | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <!-- Header -->
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #005a8d 0%, #0081c7 100%);">
+      <div class="lv-header-right">
+        <a href="admin.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">🔗</span>
+        <h1 class="lv-header-title">نموذج الانتداب</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: بيانات المسعف -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">🆔</span> ID المسعف</label>
+        <input id="dep-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label">اسم وكود الموظف</label>
+        <input id="dep-name" type="text" class="lv-input" placeholder="الاسم والكود"/>
+      </div>
+    </div>
+
+    <!-- Row 2: القطاع والمدة -->
+    <div class="lv-fields-row lv-fields-row2">
+      <div class="lv-field">
+        <label class="lv-label">القطاع المنتدب له</label>
+        <select id="dep-sector" class="lv-input rr-select">
+          <option value="أمن عام">أمن عام</option>
+          <option value="حرس حدود">حرس حدود</option>
+          <option value="أمن المنشات">أمن المنشات</option>
+          <option value="أمن طرق">أمن طرق</option>
+          <option value="كراج ميكانيك">كراج ميكانيك</option>
+        </select>
+      </div>
+
+      <div class="lv-field">
+        <label class="lv-label">المدة</label>
+        <select id="dep-duration" class="lv-input rr-select">
+          <option value="2 ايام">2 ايام</option>
+          <option value="3 ايام">3 ايام</option>
+          <option value="4 ايام">4 ايام</option>
+          <option value="5 ايام">5 ايام</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" style="background: linear-gradient(135deg, #005a8d, #0081c7); box-shadow: 0 4px 18px rgba(0, 129, 199, 0.4);" onclick="window.issueDeputation()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyDeputation()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div><!-- /lv-card -->
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="window.copyDeputation()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner"><p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p></div>
+</footer>
+
+<script src="app.js"></script>
+<script src="deputation.js"></script>
+</body>
+</html>

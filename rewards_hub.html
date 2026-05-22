@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="مكافآت وغرامات - بوابة الهلال الأحمر"/>
+  <title>مكافآت وغرامات | الهلال الأحمر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="pages.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="logo-icon">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <span class="brand-title">شؤون الهلال الأحمر</span>
+    </div>
+    <div class="navbar-actions">
+      <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
+        <span class="theme-icon dark-icon">🌙</span>
+        <span class="theme-icon light-icon">☀️</span>
+        <span class="theme-label dark-label">الوضع الفاتح</span>
+        <span class="theme-label light-label">الوضع الداكن</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <a href="index.html" class="back-btn">
+        <span class="back-arrow">→</span>
+        <span>رجوع</span>
+      </a>
+      <div class="page-hero-text">
+        <div class="page-breadcrumb">الرئيسية / مكافآت وغرامات</div>
+        <h1 class="page-title">
+          مكافآت <span class="accent">وغرامات</span>
+        </h1>
+        <p class="page-sub">اختر العملية التي تريد تنفيذها</p>
+      </div>
+    </div>
+    <div class="page-hero-deco"></div>
+  </div>
+
+  <!-- SECTIONS GRID -->
+  <main class="page-main">
+    <div class="sections-grid">
+
+      <!-- الغرامات والمخالفات -->
+      <a href="rewards.html" class="section-card" id="sc-rewards">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #ffaa00; background: rgba(255, 170, 0, 0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 8 L6 40 H42 L24 8 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 20 V30 M24 36 V35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(255, 170, 0, 0.15); color: #ffbb33;">متاح الآن</div>
+          <h2 class="sc-title">الغرامات والمخالفات</h2>
+          <p class="sc-desc">إصدار قرارات الإنذارات المتدرجة للمسعفين مع احتساب الغرامات وطباعة النماذج</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- المكافآت -->
+      <a href="bonus.html" class="section-card" id="sc-bonus">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #00e676; background: rgba(0, 230, 118, 0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 6 L30 18 H44 L33 27 L37 41 L24 33 L11 41 L15 27 L4 18 H18 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(0, 230, 118, 0.15); color: #33ff99;">متاح الآن</div>
+          <h2 class="sc-title">المكافآت</h2>
+          <p class="sc-desc">إصدار قرارات صرف المكافآت المالية لأكثر من مسعف دفعة واحدة</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

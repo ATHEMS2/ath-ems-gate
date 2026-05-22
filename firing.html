@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>قرارات الفصل | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <!-- Header -->
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #a00 0%, #d00 100%);">
+      <div class="lv-header-right">
+        <a href="admin.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">⚠️</span>
+        <h1 class="lv-header-title">نموذج قرار الفصل</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: السبب + طريقة التسديد -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label">وذلك بسبب</label>
+        <input id="firing-reason" type="text" class="lv-input" placeholder="مثال: تهرب وظيفي"/>
+      </div>
+
+      <div class="lv-field">
+        <label class="lv-label">طريقة التسديد</label>
+        <select id="payment-method" class="lv-input rr-select" onchange="window.updateForm()">
+          <option value="فاتورة">فاتورة</option>
+          <option value="رقابي">رقابي (بدون رابط)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Row 2: رابط الفاتورة (conditional) -->
+    <div class="lv-fields-row" id="invoice-row">
+      <div class="lv-field">
+        <label class="lv-label">رابط الفاتورة</label>
+        <input id="invoice-url" type="url" class="lv-input" placeholder="https://ptb.discord.com/..."/>
+      </div>
+    </div>
+
+    <!-- Row 3: بيانات المسعف (ID, كود, اسم) -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">🆔</span> ID المسعف</label>
+        <input id="paramedic-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+      <div class="lv-field lv-field-sm">
+        <label class="lv-label">الكود (مثال: E-413)</label>
+        <input id="paramedic-code" type="text" class="lv-input" placeholder="E-XXX"/>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label">الاسم</label>
+        <input id="paramedic-name" type="text" class="lv-input" placeholder="الاسم كامل"/>
+      </div>
+    </div>
+
+    <!-- Row 4: العقوبات (منع, غرامة, ID اعتماد) -->
+    <div class="lv-fields-row">
+      <div class="lv-field lv-field-sm">
+        <label class="lv-label">مدة المنع</label>
+        <select id="ban-duration" class="lv-input rr-select">
+          <option value="14">14 يوم</option>
+          <option value="7">7 أيام</option>
+        </select>
+      </div>
+      <div class="lv-field lv-field-sm">
+        <label class="lv-label">الغرامة (دولار)</label>
+        <select id="fine-amount" class="lv-input rr-select">
+          <option value="1,000,000">1,000,000</option>
+          <option value="500,000">500,000</option>
+        </select>
+      </div>
+       <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">✍️</span> ID الاعتماد</label>
+        <input id="approver-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+    </div>
+
+    <!-- Row 5: المنع النهائي -->
+    <div class="lv-fields-row lv-fields-row2">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(255,50,50,0.05);">
+        <input type="checkbox" id="final-ban" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #ff3333;" checked/>
+        <label for="final-ban" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #ff6666;">يشمل منع نهائي من الهلال الأحمر</label>
+      </div>
+    </div>
+
+    <!-- Confirm Checkbox -->
+    <div class="lv-fields-row lv-fields-row2">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(0,162,255,0.05);">
+        <input type="checkbox" id="role-request-check" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #00a2ff;"/>
+        <label for="role-request-check" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #cceeff;">لا تنسى طلب رول</label>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" onclick="window.issueFiring()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyFiring()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div><!-- /lv-card -->
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="window.copyFiring()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner"><p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p></div>
+</footer>
+
+<script src="app.js"></script>
+<script src="firing.js"></script>
+</body>
+</html>

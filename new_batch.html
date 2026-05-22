@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>نموذج تعيين دفعة جديدة | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #a00 0%, #d00 100%);">
+      <div class="lv-header-right">
+        <a href="appointments.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">🫂</span>
+        <h1 class="lv-header-title">نموذج تعيين دفعة جديدة</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: رقم الدفعة, عدد المقبولين, الرتبة -->
+    <div class="lv-fields-row">
+      <div class="lv-field lv-field-xs" style="flex: 1">
+        <label class="lv-label">رقم الدفعة</label>
+        <input id="batch-num" type="number" class="lv-input lv-input-num" placeholder="مثال: 6"/>
+      </div>
+      <div class="lv-field lv-field-xs" style="flex: 1">
+        <label class="lv-label">عدد المقبولين</label>
+        <input id="accepted-count" type="number" class="lv-input lv-input-num" placeholder="مثال: 11"/>
+      </div>
+      <div class="lv-field" style="flex: 1.5">
+        <label class="lv-label">رتبة التوظيف</label>
+        <select id="emp-level" class="lv-input rr-select">
+          <option value="متدرب">متدرب</option>
+          <option value="مستوى 1">مستوى 1</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Row 2: IDs -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">👨‍💼</span> توقيع مسؤول التوظيف</label>
+        <input id="manager-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">⭐</span> توقيع القائد</label>
+        <input id="leader-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">🌟</span> توقيع نائب القائد</label>
+        <input id="deputy-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
+      </div>
+    </div>
+
+    <!-- Row 3: Paramedic IDs List -->
+    <div class="lv-fields-row">
+      <div class="lv-field" style="flex: 1;">
+        <label class="lv-label"><span class="lv-licon">🆔</span> إضافة مسعف (ID)</label>
+        <div style="display: flex; gap: 0.5rem;">
+          <input id="add-id-input" type="text" class="lv-input" placeholder="أدخل معرّف المسعف الجديد" style="flex: 1;" />
+          <button id="add-id-btn" class="lv-btn" style="width: auto; padding: 0 1.2rem; border-radius: 6px; background: rgba(0, 204, 255, 0.15); color: #00ccff; border: 1px solid rgba(0, 204, 255, 0.3); border-bottom: 3px solid rgba(0, 204, 255, 0.3); cursor: pointer; font-weight: bold; flex: none;">+ إضافة</button>
+        </div>
+        <div id="paramedics-list" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+          <!-- IDs will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions" style="margin-top: 1.5rem;">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" style="background: linear-gradient(135deg, #cc0000, #ff0000); color: #fff; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);" onclick="window.issueBatch()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyBatch()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div>
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="window.copyBatch()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="new_batch.js"></script>
+</body>
+</html>

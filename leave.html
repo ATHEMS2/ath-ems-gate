@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>إجازة داخلية | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <!-- Card Header -->
+    <div class="lv-card-header">
+      <div class="lv-header-right">
+        <a href="admin.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">📋</span>
+        <h1 class="lv-header-title">نموذج إجازة داخلية</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Fields Row 1: 3 fields -->
+    <div class="lv-fields-row">
+
+      <div class="lv-field">
+        <label class="lv-label">
+          <span class="lv-licon">🆔</span> ID المسعف
+        </label>
+        <input id="paramedic-id" type="text" class="lv-input" placeholder="معرّف ديسكورد المسعف"/>
+      </div>
+
+      <div class="lv-field lv-field-sm">
+        <label class="lv-label">
+          <span class="lv-licon">⏰</span> وقت بداية الإجازة
+        </label>
+        <div class="lv-time-now" id="start-time-display">—</div>
+        <input id="start-override" type="time" class="lv-input lv-input-time" title="تعديل الوقت يدوياً (اختياري)"/>
+        <span class="lv-hint">يُعبأ تلقائياً · يمكن تعديله</span>
+      </div>
+
+      <div class="lv-field lv-field-xs">
+        <label class="lv-label">
+          <span class="lv-licon">⏱️</span> مدة الإجازة (ساعات)
+        </label>
+        <input id="duration" type="number" class="lv-input lv-input-num" placeholder="24" min="0.5" max="720" step="0.5"/>
+      </div>
+
+    </div>
+
+    <!-- Fields Row 2: balance + remaining only -->
+    <div class="lv-fields-row lv-fields-row2">
+
+      <div class="lv-field">
+        <label class="lv-label">
+          <span class="lv-licon">🏦</span> الرصيد الحالي (ساعة)
+        </label>
+        <input id="balance" type="number" class="lv-input lv-input-num" placeholder="13" min="0" max="9999" step="0.5"/>
+      </div>
+
+      <div class="lv-field lv-field-xs lv-field-auto">
+        <label class="lv-label">
+          <span class="lv-licon">💰</span> الرصيد المتبقي
+        </label>
+        <div class="lv-auto-val" id="remaining-display">—</div>
+        <span class="lv-hint">يُحسب تلقائياً</span>
+      </div>
+
+    </div>
+
+    <!-- Confirm Checkbox -->
+    <div class="lv-fields-row lv-fields-row2">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(0,255,136,0.05);">
+        <input type="checkbox" id="confirm-register" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #00ff88;"/>
+        <label for="confirm-register" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #ccffdd;">لا تنسى تسجل الإجازة بجدول الإجازات</label>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" onclick="issueLeave()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="copyLeave()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <!-- Error -->
+    <div class="lv-error" id="lv-error"></div>
+
+  </div><!-- /lv-card -->
+
+  <!-- TEMPLATE EDITOR
+  <details class="lv-template-panel" id="lv-template-editor">
+    <summary class="lv-template-summary">⚙️ تحرير قالب الصادر (الكود)</summary>
+    <div class="lv-template-body">
+      <p class="lv-template-help">
+        عدّل النص أدناه ثم اضغط <strong>حفظ القالب</strong>. استخدم المتغيرات بين أقواس مزدوجة —
+        تُستبدل تلقائياً عند الإصدار.
+      </p>
+      <div class="lv-template-vars">
+        <code>{{paramId}}</code>
+        <code>{{duration}}</code>
+        <code>{{remaining}}</code>
+        <code>{{startTime}}</code>
+        <code>{{endTime}}</code>
+        <code>{{rulesUrl}}</code>
+        <code>{{approvalRole}}</code>
+      </div>
+      <textarea id="lv-template-text" class="lv-template-text" spellcheck="false" dir="rtl"></textarea>
+      <div class="lv-template-actions">
+        <button type="button" class="lv-btn lv-btn-issue" id="lv-template-save">💾 حفظ القالب</button>
+        <button type="button" class="lv-btn lv-btn-copy" id="lv-template-reset">↩ استعادة الافتراضي</button>
+        <button type="button" class="lv-btn lv-btn-copy" id="lv-template-open-file">📁 leave-template.js</button>
+      </div>
+      <p class="lv-template-status" id="lv-template-status"></p>
+    </div>
+  </details> -->
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="copyLeave()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner"><p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p></div>
+</footer>
+
+<script src="app.js"></script>
+<script src="leave-template.js"></script>
+<script src="leave-template-editor.js"></script>
+<script src="leave2.js"></script>
+</body>
+</html>

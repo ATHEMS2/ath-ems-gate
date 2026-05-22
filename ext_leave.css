@@ -1,0 +1,43 @@
+/* ext_leave.css — extra styles for external leave page */
+
+/* Dates row */
+.ext-dates-row {
+  display: flex !important;
+  align-items: center;
+  gap: 0 !important;
+  background: var(--red-glow-soft);
+}
+
+.lv-field-auto-date {
+  flex: 1;
+  background: transparent !important;
+}
+
+.ext-arrow {
+  font-size: 1.6rem;
+  color: var(--text-accent);
+  padding: 0 .5rem;
+  opacity: .7;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Auto date value display */
+.ext-date-val {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--red-vivid);
+  padding: .5rem .9rem;
+  background: var(--bg-card);
+  border-radius: 10px;
+  border: 1.5px solid var(--border-card);
+  text-align: center;
+  letter-spacing: .03em;
+  transition: all var(--transition);
+  direction: ltr;
+}
+.ext-date-val.active {
+  border-color: var(--red-bright);
+  box-shadow: 0 0 0 3px var(--red-glow-soft);
+}

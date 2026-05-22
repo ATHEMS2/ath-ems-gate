@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="الشؤون الإدارية - بوابة الهلال الأحمر"/>
+  <title>الشؤون الإدارية | الهلال الأحمر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="pages.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="logo-icon">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <span class="brand-title">شؤون الهلال الأحمر</span>
+    </div>
+    <div class="navbar-actions">
+      <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
+        <span class="theme-icon dark-icon">🌙</span>
+        <span class="theme-icon light-icon">☀️</span>
+        <span class="theme-label dark-label">الوضع الفاتح</span>
+        <span class="theme-label light-label">الوضع الداكن</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <a href="index.html" class="back-btn">
+        <span class="back-arrow">→</span>
+        <span>رجوع</span>
+      </a>
+      <div class="page-hero-text">
+        <div class="page-breadcrumb">الرئيسية / الشؤون الإدارية</div>
+        <h1 class="page-title">
+          <span class="accent">الشؤون</span> الإدارية
+        </h1>
+        <p class="page-sub">اختر العملية الإدارية التي تريد تنفيذها</p>
+      </div>
+    </div>
+    <div class="page-hero-deco"></div>
+  </div>
+
+  <!-- SECTIONS GRID -->
+  <main class="page-main">
+    <div class="sections-grid">
+
+      <!-- الإجازات الداخلية -->
+      <a href="leave.html" class="section-card" id="sc-leave">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="36" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 6 L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M32 6 L32 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6 20 H42" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="31" r="5" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 28 L24 31 L26 33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge">متاح الآن</div>
+          <h2 class="sc-title">الإجازات الداخلية</h2>
+          <p class="sc-desc">إصدار قرارات الإجازات الداخلية للمسعفين مع الحساب التلقائي للأوقات والأرصدة</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- نماذج الانتداب -->
+      <a href="deputation.html" class="section-card" id="sc-deputation">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #0081c7; background: rgba(0, 129, 199, 0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 24 L36 24 M28 16 L36 24 L28 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(0, 129, 199, 0.15); color: #00a2ff;">متاح الآن</div>
+          <h2 class="sc-title">نماذج الانتداب</h2>
+          <p class="sc-desc">إصدار طلبات الموافقة لمهام الانتداب الخارجية للقطاعات الأخرى</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- طلب رول -->
+      <a href="role_request.html" class="section-card" id="sc-role">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="18" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M10 40 C10 30 38 30 38 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M30 10 L34 14 L42 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge">متاح الآن</div>
+          <h2 class="sc-title">طلب رول</h2>
+          <p class="sc-desc">إصدار طلبات إضافة أو إزالة الرولات بـ 5 أنواع مختلفة مع توليد النص تلقائياً</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- الاستقالات -->
+      <a href="resignation.html" class="section-card" id="sc-resignation">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #ff5555;">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 10 H8 V38 H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 24 H40 M32 16 L40 24 L32 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge">متاح الآن</div>
+          <h2 class="sc-title">الاستقالات</h2>
+          <p class="sc-desc">إصدار قرارات إنهاء الخدمة مع حساب الغرامات ومنع التوظيف</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- الإجازات الخارجية -->
+      <a href="ext_leave.html" class="section-card" id="sc-ext-leave">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 34 C10 20 22 8 38 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M34 6 L38 10 L34 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="14" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="32" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M18 36 L28 36" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sc-badge">متاح الآن</div>
+          <h2 class="sc-title">الإجازات الخارجية</h2>
+          <p class="sc-desc">إصدار قرارات الإجازات الخارجية بحساب التواريخ تلقائياً بتوقيت السعودية</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- قرارات الفصل -->
+      <a href="firing.html" class="section-card" id="sc-firing">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #ff0000; background: rgba(255,0,0,0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 16 L32 32 M32 16 L16 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(255,0,0,0.15); color: #ff3333;">إجراء صارم</div>
+          <h2 class="sc-title">قرارات الفصل</h2>
+          <p class="sc-desc">إصدار قرارات الفصل النهائية مع المنع النهائي، والغرامات وإيقاف التوظيف</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- نماذج التكتات -->
+      <a href="tickets.html" class="section-card" id="sc-tickets">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap" style="color: #ff3333; background: rgba(255, 0, 0, 0.1);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 16 H32 M16 24 H32 M16 32 H24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge" style="background: rgba(255, 0, 0, 0.15); color: #ff6666;">تكتات الدعم</div>
+          <h2 class="sc-title">نماذج التكتات</h2>
+          <p class="sc-desc">نماذج وأكواد جاهزة للرد والتفاعل مع تكتات المسعفين المختلفة بسرعة</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

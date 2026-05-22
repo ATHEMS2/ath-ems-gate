@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="بوابة شؤون الهلال الأحمر - الشؤون الإدارية، التعيين والترقيات، المكافآت والغرامات" />
+  <title>شؤون الهلال الأحمر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="logo-icon">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <span class="brand-title">شؤون الهلال الأحمر</span>
+    </div>
+    <div class="navbar-actions">
+      <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
+        <span class="theme-icon dark-icon">🌙</span>
+        <span class="theme-icon light-icon">☀️</span>
+        <span class="theme-label dark-label">الوضع الفاتح</span>
+        <span class="theme-label light-label">الوضع الداكن</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-logo-center" style="margin-bottom: 1.5rem; display: flex; justify-content: center;">
+        <img src="logo.png" alt="شعار الهلال الأحمر" style="width: 180px; height: 180px; object-fit: contain; border-radius: 50%; box-shadow: 0 6px 32px rgba(227, 24, 55, 0.25);" />
+      </div>
+      <h1 class="hero-title">بوابة <span class="accent">شؤون</span><br/>الهلال الأحمر</h1>
+      <p class="hero-sub">مقاطعة العاذرية</p>
+      <div class="hero-divider"></div>
+    </div>
+    <div class="scroll-hint">
+      <span>اختر القسم</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- ===== CARDS ===== -->
+  <main class="cards-section">
+    <div class="cards-grid">
+
+      <!-- Card 1: الشؤون الإدارية -->
+      <div class="card card-featured" id="card-admin" tabindex="0" role="button" aria-label="الشؤون الإدارية" onclick="location.href='admin.html'">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-badge-top">الأكثر استخداماً</div>
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="14" width="48" height="36" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M8 22 H56" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M20 32 H44" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M20 40 H36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="16" cy="32" r="2" fill="currentColor"/>
+                <circle cx="16" cy="40" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-number">01</div>
+          <h2 class="card-title">الشؤون الإدارية</h2>
+          <p class="card-desc">إدارة الملفات الوظيفية والوثائق الرسمية للموظفين والإجراءات الإدارية</p>
+          <div class="card-tags">
+            <span class="tag">الملفات الوظيفية</span>
+            <span class="tag">الوثائق</span>
+            <span class="tag">الإجراءات</span>
+          </div>
+          <div class="card-btn">
+            <span>دخول القسم</span>
+            <span class="btn-arrow">←</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: تعيين وترقيات -->
+      <div class="card card-featured" id="card-appointments" tabindex="0" role="button" aria-label="تعيين وترقيات" onclick="location.href='appointments.html'">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="22" r="10" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M14 50 C14 40 50 40 50 50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M42 12 L46 16 L54 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-number">02</div>
+          <h2 class="card-title">تعيين وترقيات</h2>
+          <p class="card-desc">إدارة قرارات التعيين والترقيات الوظيفية وتطوير المسار المهني للكوادر</p>
+          <div class="card-tags">
+            <span class="tag">قرارات التعيين</span>
+            <span class="tag">الترقيات</span>
+            <span class="tag">المسار المهني</span>
+          </div>
+          <div class="card-btn">
+            <span>دخول القسم</span>
+            <span class="btn-arrow">←</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: مكافآت وغرامات -->
+      <div class="card card-featured" id="card-rewards" tabindex="0" role="button" aria-label="مكافآت وغرامات" onclick="location.href='rewards_hub.html'">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-icon-wrap">
+            <div class="card-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 8 L38 22 L54 24 L43 35 L46 51 L32 44 L18 51 L21 35 L10 24 L26 22 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M26 40 L20 54" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M38 40 L44 54" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-number">03</div>
+          <h2 class="card-title">مكافآت وغرامات</h2>
+          <p class="card-desc">إصدار قرارات المكافآت التشجيعية والغرامات التأديبية وفق اللوائح المعتمدة</p>
+          <div class="card-tags">
+            <span class="tag">المكافآت</span>
+            <span class="tag">الغرامات</span>
+            <span class="tag">اللوائح</span>
+          </div>
+          <div class="card-btn">
+            <span>دخول القسم</span>
+            <span class="btn-arrow">←</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
