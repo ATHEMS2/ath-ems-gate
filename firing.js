@@ -100,8 +100,7 @@ ${withLine}
 
 \`اعتماد:\` <@${apprv}>                  
 
-يرسل الاصل الى : 
-<@&1404535885864632340> ***`;
+يرسل الاصل الى : <@&1404535885864632340> ***`;
 
     // Output
     const card = document.getElementById('lv-output-card');
