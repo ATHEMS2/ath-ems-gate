@@ -45,6 +45,25 @@
     return `${h} ساعة و ${m} دقيقة`;
   }
 
+  /* ── LEAVE TEMPLATE ── */
+  window.HLAL_LEAVE_DEFAULT_TEMPLATE = `***﷽
+
+\` الموضوع :\` إجازة داخلية
+
+\` للمسعف المحترم :\` <@{{paramId}}>
+
+\` مدة الإجازة :\`  {{duration}} 
+
+\` الرصيد المتبقي :\`  {{remaining}} ساعة 
+
+\` من الساعة :\` {{startTime}}
+
+\` إلى الساعة :\` {{endTime}}
+
+[يرجى قراءه القوانين قبل تغيير الوظيفة](https://discord.com/channels/1404512396923375696/1404536315537526794/1471261658969014393)
+
+\` يرسل الاصل الى :\` <@&1404535885864632340>***`;
+
   /* ── Grab elements ── */
   const startDisplay   = document.getElementById('start-time-display');
   const startOverride  = document.getElementById('start-override');
@@ -109,6 +128,19 @@
 
   /* ── Issue (Generate) ── */
   let generatedText = '';
+
+  // Render template with variables
+  window.renderLeaveTemplate = function (template, vars) {
+    if (!template) return '';
+    let result = template;
+    for (const key in vars) {
+      if (vars.hasOwnProperty(key)) {
+        const regex = new RegExp(`{{${key}}}`, 'g');
+        result = result.replace(regex, vars[key]);
+      }
+    }
+    return result;
+  };
 
   window.issueLeave = function () {
     const paramId  = document.getElementById('paramedic-id').value.trim();
