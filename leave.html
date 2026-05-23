@@ -50,14 +50,16 @@
 
       <div class="lv-field">
         <label class="lv-label">
-          <span class="lv-licon">🆔</span> ID المسعف
+          <span class="lv-licon">🆔</span>
+          <span class="lv-label-text">ID المسعف</span>
         </label>
         <input id="paramedic-id" type="text" class="lv-input" placeholder="معرّف ديسكورد المسعف"/>
       </div>
 
       <div class="lv-field lv-field-sm">
         <label class="lv-label">
-          <span class="lv-licon">⏰</span> وقت بداية الإجازة
+          <span class="lv-licon">⏰</span>
+          <span class="lv-label-text">وقت بداية الإجازة</span>
         </label>
         <div class="lv-time-now" id="start-time-display">—</div>
         <input id="start-override" type="time" class="lv-input lv-input-time" title="تعديل الوقت يدوياً (اختياري)"/>
@@ -66,7 +68,8 @@
 
       <div class="lv-field lv-field-xs">
         <label class="lv-label">
-          <span class="lv-licon">⏱️</span> مدة الإجازة (ساعات)
+          <span class="lv-licon">⏱️</span>
+          <span class="lv-label-text">مدة الإجازة (ساعات)</span>
         </label>
         <input id="duration" type="number" class="lv-input lv-input-num" placeholder="24" min="0.5" max="720" step="0.5"/>
       </div>
@@ -78,14 +81,16 @@
 
       <div class="lv-field">
         <label class="lv-label">
-          <span class="lv-licon">🏦</span> الرصيد الحالي (ساعة)
+          <span class="lv-licon">🏦</span>
+          <span class="lv-label-text">الرصيد الحالي (ساعة)</span>
         </label>
         <input id="balance" type="number" class="lv-input lv-input-num" placeholder="13" min="0" max="9999" step="0.5"/>
       </div>
 
       <div class="lv-field lv-field-xs lv-field-auto">
         <label class="lv-label">
-          <span class="lv-licon">💰</span> الرصيد المتبقي
+          <span class="lv-licon">💰</span>
+          <span class="lv-label-text">الرصيد المتبقي</span>
         </label>
         <div class="lv-auto-val" id="remaining-display">—</div>
         <span class="lv-hint">يُحسب تلقائياً</span>
@@ -97,7 +102,9 @@
     <div class="lv-fields-row lv-fields-row2">
       <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(0,255,136,0.05);">
         <input type="checkbox" id="confirm-register" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #00ff88;"/>
-        <label for="confirm-register" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #ccffdd;">لا تنسى تسجل الإجازة بجدول الإجازات</label>
+        <label for="confirm-register" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #ccffdd;">
+          <span class="lv-label-text">لا تنسى تسجل الإجازة بجدول الإجازات</span>
+        </label>
       </div>
     </div>
 
