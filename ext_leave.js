@@ -50,35 +50,79 @@
     }
   }
 
-  daysInput.addEventListener('input', updateEndDate);
+  daysInput.addEventListener('input', () => {
+    const isExtend = document.getElementById('extend-leave-check').checked;
+    if (!isExtend) updateEndDate();
+  });
 
-  /* ── Return Toggle ── */
-  window.toggleReturnMode = function() {
-    const isReturn = document.getElementById('return-leave-check').checked;
-    document.getElementById('days-field').style.display = isReturn ? 'none' : 'flex';
-    document.getElementById('editor-field').style.display = isReturn ? 'flex' : 'none';
+  /* ── Mode Toggle (return / extend / normal — mutually exclusive) ── */
+  window.toggleMode = function(clicked) {
+    const returnChk = document.getElementById('return-leave-check');
+    const extendChk = document.getElementById('extend-leave-check');
+
+    // Uncheck the other one
+    if (clicked === 'return') extendChk.checked = false;
+    if (clicked === 'extend') returnChk.checked = false;
+
+    const isReturn = returnChk.checked;
+    const isExtend = extendChk.checked;
+
+    // days-field (normal leave)
+    document.getElementById('days-field').style.display        = (!isReturn && !isExtend) ? 'flex' : 'none';
+    // editor-field (return mode)
+    document.getElementById('editor-field').style.display      = isReturn ? 'flex' : 'none';
+    // extend-days-field (extend mode)
+    document.getElementById('extend-days-field').style.display = isExtend ? 'flex' : 'none';
+    // dates row (normal + extend both need it, return doesn't)
     const datesRow = document.querySelector('.ext-dates-row');
     if (datesRow) datesRow.style.display = isReturn ? 'none' : 'flex';
+    // role-request checkbox (normal leave only)
     const roleReq = document.getElementById('role-request-check');
-    if (roleReq) roleReq.parentElement.style.display = isReturn ? 'none' : 'flex';
+    if (roleReq) roleReq.parentElement.style.display = (!isReturn && !isExtend) ? 'flex' : 'none';
+
+    // Recalc end date display for extend mode
+    if (isExtend) updateExtendEndDate();
   };
+
+  // Keep old name working just in case
+  window.toggleReturnMode = function() { window.toggleMode('return'); };
+
+  /* ── Live update end date for extend mode ── */
+  const extendDaysInput = document.getElementById('extend-days');
+
+  function updateExtendEndDate() {
+    const n = parseInt(extendDaysInput.value);
+    if (!isNaN(n) && n > 0) {
+      const endParts = addDaysSaudi(todayParts, n);
+      endDisplay.textContent = fmtDate(endParts);
+      endDisplay.classList.add('active');
+    } else {
+      endDisplay.textContent = '—';
+      endDisplay.classList.remove('active');
+    }
+  }
+
+  extendDaysInput.addEventListener('input', updateExtendEndDate);
 
   /* ── Issue ── */
   let generatedText = '';
 
   window.issueExtLeave = function () {
-    const paramId = document.getElementById('paramedic-id').value.trim();
-    const isReturn = document.getElementById('return-leave-check') ? document.getElementById('return-leave-check').checked : false;
-    const editorId = document.getElementById('editor-id') ? document.getElementById('editor-id').value.trim() : '';
-
-    const n       = parseInt(daysInput.value);
-    const errorEl = document.getElementById('lv-error');
+    const paramId  = document.getElementById('paramedic-id').value.trim();
+    const isReturn = document.getElementById('return-leave-check').checked;
+    const isExtend = document.getElementById('extend-leave-check').checked;
+    const editorId = document.getElementById('editor-id').value.trim();
+    const n        = parseInt(daysInput.value);
+    const nExtend  = parseInt(extendDaysInput.value);
+    const errorEl  = document.getElementById('lv-error');
 
     const errs = [];
-    if (!paramId)          errs.push('• معرّف المسعف مطلوب');
-    
+    if (!paramId) errs.push('• معرّف المسعف مطلوب');
+
     if (isReturn) {
       if (!editorId) errs.push('• معرّف الإعتماد مطلوب');
+    } else if (isExtend) {
+      if (isNaN(nExtend) || nExtend < 1) errs.push('• عدد أيام التمديد يجب أن يكون 1 على الأقل');
     } else {
       if (isNaN(n) || n < 1) errs.push('• عدد الأيام يجب أن يكون 1 على الأقل');
       const roleReqBox = document.getElementById('role-request-check');
@@ -107,11 +151,29 @@
 \`توقيع واعتماد :\` <@${editorId}>
 
 \`يرسل الاصل الى :\` <@&1404535885864632340>***`;
+
+    } else if (isExtend) {
+      const endParts = addDaysSaudi(todayParts, nExtend);
+      const endStr   = fmtDate(endParts);
+
+      generatedText =
+`***﷽
+
+\` الموضوع :\`تمديد إجازة خارجيه
+
+\` للمسعف المحترم :\` <@${paramId}>  
+
+\` مدة الإجازة :\`  ${nExtend} يوم 
+
+\` إلى تاريخ :\`  ${endStr}
+
+[يرجى قراءه القوانين قبل اخذ اجازه خارجية](https://discord.com/channels/1404512396923375696/1404536315537526794/1471261658969014393)
+
+\` يرسل الاصل الى :\` <@&1404535885864632340>***`;
+
     } else {
-      const startStr = fmtDate(todayParts);
       const endParts = addDaysSaudi(todayParts, n);
       const endStr   = fmtDate(endParts);
-      const dayWord  = n === 1 ? 'يوم' : 'يوم';
 
       generatedText =
 `***﷽
@@ -120,13 +182,13 @@
 
 \` للمسعف المحترم :\` <@${paramId}>
 
-\` مدة الإجازة :\`  ${n} ${dayWord} 
+\` مدة الإجازة :\`  ${n} يوم 
 
-\` من تاريخ :\`  ${startStr}
+\` من تاريخ :\`  ${todayStr}
 
 \` إلى تاريخ :\`  ${endStr}
 
-[يرجى قراءه القوانين قبل اخذ اجازه خارجية](https://discord.com/channels/1404512396923375696/1404536315537526794/1509034080019288104)
+[يرجى قراءه القوانين قبل اخذ اجازه خارجية](https://discord.com/channels/1404512396923375696/1404536315537526794/1471261658969014393)
 
 \` يرسل الاصل الى :\` <@&1404535885864632340>***`;
     }
