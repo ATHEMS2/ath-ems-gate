@@ -5,15 +5,10 @@
   let generatedText = '';
   let paramedicsStore = [];
 
-  const batchNumInp   = document.getElementById('batch-num');
-  const acceptedInp   = document.getElementById('accepted-count');
-  const empLevelSel   = document.getElementById('emp-level');
-  
-  const managerId     = document.getElementById('manager-id');
-  const leaderId      = document.getElementById('leader-id');
-  const deputyId      = document.getElementById('deputy-id');
+  const batchNumInp = document.getElementById('batch-num');
+  const empLevelSel = document.getElementById('emp-level');
 
-  const addIdInp      = document.getElementById('add-id-input');
+  const addIdInp = document.getElementById('add-id-input');
   const addIdBtn      = document.getElementById('add-id-btn');
   const listEl        = document.getElementById('paramedics-list');
   const errorEl       = document.getElementById('lv-error');
@@ -63,17 +58,10 @@
     const errs = [];
     
     const batchNum = batchNumInp.value.trim();
-    const accCount = acceptedInp.value.trim();
-    const level    = empLevelSel.value;
-    const mgr      = managerId.value.trim();
-    const ldr      = leaderId.value.trim();
-    const dep      = deputyId.value.trim();
+    const level = empLevelSel.value;
+    const accCount = paramedicsStore.length;
 
     if (!batchNum) errs.push('• رقم الدفعة مطلوب');
-    if (!accCount) errs.push('• عدد المقبولين مطلوب');
-    if (!mgr)      errs.push('• ID شؤون التوظيف مطلوب');
-    if (!ldr)      errs.push('• ID توقيع القائد مطلوب');
-    if (!dep)      errs.push('• ID توقيع نائب القائد مطلوب');
     if (paramedicsStore.length === 0) errs.push('• يجب إضافة مسعف واحد على الأقل');
 
     if (errs.length) {
@@ -88,16 +76,16 @@
     generatedText = 
 `**▬▬▬ ﷽ ▬▬▬
 \`\`\`diff
--الموضوع: تعين الدفعه رقم (${batchNum})  .
+-الموضوع: تعين الدفعه رقم ( ${batchNum} )  .
 \`\`\`
 
 \`\`\`cs
 # بعد الاطلاع على نظام التعينات واحصائيات شؤون التوظيف هذا اليوم الصادر من قبل قيادة الهلال الاحمر قررنا مايلي:
 \`\`\`
 \`\`\`
-أولا: الموافقة على تعيين الدفعه رقم (${batchNum}) و تشمل (${accCount}) مسعف بمستوى ${level} اعتباراً من صدور هذا القرار
-ثانياً: على مدير قسم السجلات اعتماد اكوادهم الجديدة وابلاغهم مضمونه
-ثالثاً:  على مدير قسم الدورات الحاقهم بدورة العمليات 
+أولًأ: الموافقة على تعيين الدفعه رقم ( ${batchNum} ) و تشمل ( ${accCount} ) مسعف بمستوى ( ${level} ) اعتبارًا من صدور هذا القرار
+ثانيًا: على مدير قسم السجلات اعتماد اكوادهم الجديدة وابلاغهم مضمونه
+ثالثًا:  على مدير قسم الدورات الحاقهم بدورة العمليات 
 \`\`\`
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
@@ -108,20 +96,22 @@ ${idsMapped}
  مع تمنياتنا لهم بالتوفيق والنجاح  .
 
 توقيع / مسؤول شؤون التوظيف 
-<@${mgr}> 
+<@1172480190618816582>
 <@&1404535891401117767> 
 
 إعتماد /  
-<@${ldr}> 
-<@&1404535891443060886> 
-<@${dep}>
+<@1243196849372790916>
+<@&1404535891443060886>
+<@510191753165537280>
 <@&1404535891351048413> 
 
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
-يرسل الاصل / <@&1404535885864632340> 
+يرسل الاصل الى /
+<@&1404535885864632340> 
 
-للعلم والاحاطة / <@&1404535887643021414>**`;
+للعلم والاحاطة /
+||<@&1404535887643021414>||**`;
 
     // Output
     const card = document.getElementById('lv-output-card');

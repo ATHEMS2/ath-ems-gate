@@ -39,44 +39,24 @@
         </a>
       </div>
       <div class="lv-header-center">
-        <span class="lv-header-icon">🫂</span>
+        <span class="lv-header-icon">📝</span>
         <h1 class="lv-header-title">نموذج تعيين دفعة جديدة</h1>
       </div>
       <div class="lv-header-left"></div>
     </div>
 
-    <!-- Row 1: رقم الدفعة, عدد المقبولين, الرتبة -->
+    <!-- Row 1: رقم الدفعة, رتبة التوظيف -->
     <div class="lv-fields-row">
-      <div class="lv-field lv-field-xs" style="flex: 1">
+      <div class="lv-field" style="flex: 1 1 50%; max-width: 50%;">
         <label class="lv-label">رقم الدفعة</label>
         <input id="batch-num" type="number" class="lv-input lv-input-num" placeholder="مثال: 6"/>
       </div>
-      <div class="lv-field lv-field-xs" style="flex: 1">
-        <label class="lv-label">عدد المقبولين</label>
-        <input id="accepted-count" type="number" class="lv-input lv-input-num" placeholder="مثال: 11"/>
-      </div>
-      <div class="lv-field" style="flex: 1.5">
+      <div class="lv-field" style="flex: 1 1 50%; max-width: 50%;">
         <label class="lv-label">رتبة التوظيف</label>
         <select id="emp-level" class="lv-input rr-select">
           <option value="متدرب">متدرب</option>
           <option value="مستوى 1">مستوى 1</option>
         </select>
-      </div>
-    </div>
-
-    <!-- Row 2: IDs -->
-    <div class="lv-fields-row">
-      <div class="lv-field">
-        <label class="lv-label"><span class="lv-licon">👨‍💼</span> توقيع مسؤول التوظيف</label>
-        <input id="manager-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
-      </div>
-      <div class="lv-field">
-        <label class="lv-label"><span class="lv-licon">⭐</span> توقيع القائد</label>
-        <input id="leader-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
-      </div>
-      <div class="lv-field">
-        <label class="lv-label"><span class="lv-licon">🌟</span> توقيع نائب القائد</label>
-        <input id="deputy-id" type="text" class="lv-input" placeholder="معرّف ديسكورد"/>
       </div>
     </div>
 

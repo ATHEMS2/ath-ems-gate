@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>الترقيات | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="role_request.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <div class="lv-card-header" style="background: linear-gradient(135deg, #a00 0%, #d00 100%);">
+      <div class="lv-header-right">
+        <a href="appointments.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">⬆️</span>
+        <h1 class="lv-header-title">نموذج الترقيات</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Row 1: المستوى الحالي + المستوى الجديد -->
+    <div class="lv-fields-row">
+      <div class="lv-field">
+        <label class="lv-label">المستوى الحالي</label>
+        <select id="current-level" class="lv-input rr-select">
+          <option value="متدرب">متدرب</option>
+          <option value="1">مستوى 1</option>
+          <option value="2">مستوى 2</option>
+          <option value="3">مستوى 3</option>
+          <option value="4">مستوى 4</option>
+          <option value="5">مستوى 5</option>
+          <option value="6">مستوى 6</option>
+          <option value="7">مستوى 7</option>
+          <option value="8">مستوى 8</option>
+        </select>
+      </div>
+      <div class="lv-field">
+        <label class="lv-label">المستوى الجديد</label>
+        <select id="new-level" class="lv-input rr-select">
+          <option value="1">مستوى 1</option>
+          <option value="2">مستوى 2</option>
+          <option value="3">مستوى 3</option>
+          <option value="4">مستوى 4</option>
+          <option value="5">مستوى 5</option>
+          <option value="6">مستوى 6</option>
+          <option value="7">مستوى 7</option>
+          <option value="8">مستوى 8</option>
+          <option value="9">مستوى 9</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Row 2: ترقية استثنائية -->
+    <div class="lv-fields-row lv-fields-row2">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(255,170,0,0.05);">
+        <input type="checkbox" id="exceptional-check" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #ffaa00;"/>
+        <label for="exceptional-check" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #ffdd88;">ترقية استثنائية</label>
+      </div>
+    </div>
+
+    <!-- Row 3: ترقية معتمد -->
+    <div class="lv-fields-row lv-fields-row3">
+      <div class="lv-field" style="flex-direction: row; gap: .8rem; align-items: center; padding: 1rem 1.5rem; justify-content: flex-start; background: rgba(0,162,255,0.05);">
+        <input type="checkbox" id="certified-check" class="lv-input" style="width: 22px; height: 22px; cursor: pointer; flex: none; accent-color: #4690C2;"/>
+        <label for="certified-check" class="lv-label" style="cursor: pointer; font-size: 1rem; margin: 0; color: #4690C2;">ترقية معتمد</label>
+      </div>
+    </div>
+
+    <!-- Row 4: إضافة IDs -->
+    <div class="lv-fields-row">
+      <div class="lv-field" style="flex: 1;">
+        <label class="lv-label"><span class="lv-licon">🆔</span> إضافة مسعف (ID)</label>
+        <div style="display: flex; gap: 0.5rem;">
+          <input id="add-id-input" type="text" class="lv-input" placeholder="أدخل معرّف المسعف واضغط إضافة" style="flex: 1;" />
+          <button id="add-id-btn" class="lv-btn" style="width: auto; padding: 0 1.2rem; border-radius: 6px; background: rgba(220, 20, 60, 0.15); color: #ff4060; border: 1px solid rgba(220,20,60,0.3); border-bottom: 3px solid rgba(220,20,60,0.3); cursor: pointer; font-weight: bold; flex: none;">+ إضافة</button>
+        </div>
+        <div id="paramedics-list" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;"></div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" onclick="window.issuePromotion()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="window.copyPromotion()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <div class="lv-error" id="lv-error"></div>
+  </div>
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="window.copyPromotion()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+    </div>
+    <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="promotion.js"></script>
+</body>
+</html>
