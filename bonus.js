@@ -13,6 +13,18 @@
   const approverId  = document.getElementById('approver-id');
   const errorEl     = document.getElementById('lv-error');
 
+  function formatNumberWithCommas(value) {
+    const digits = value.toString().replace(/[^\d]/g, '');
+    if (!digits) return '';
+    return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  if (amountInp) {
+    amountInp.addEventListener('input', function () {
+      this.value = formatNumberWithCommas(this.value);
+    });
+  }
+
   // Add ID to list
   function addParamedic() {
     const val = addIdInp.value.trim();
@@ -89,13 +101,10 @@
 # بعد الاطلاع على نظام المكافأة الصادر من قيادة الهلال الاحمر قررنا مايلي 
  
 : يتم صرف مكافأة ماليه بقيمة ${fine} للمسعفين ادناه
-
 \`\`\`
-
 ${idsMapped}
 
 \`\`\`وذلك بسبب :  ${reason}  \`\`\`
-
 \`يرجى فتح تكت التواصل مع القيادة لاستلام المكافأة خلال 48 ساعه\`
 
 \`اعتماد:\`

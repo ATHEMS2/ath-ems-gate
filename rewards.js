@@ -15,6 +15,18 @@
   const confirmRegRow = document.getElementById('confirm-register-row');
   const confirmReg    = document.getElementById('confirm-register');
 
+  function formatNumberWithCommas(value) {
+    const digits = value.toString().replace(/[^\d]/g, '');
+    if (!digits) return '';
+    return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  if (fineInp) {
+    fineInp.addEventListener('input', function () {
+      this.value = formatNumberWithCommas(this.value);
+    });
+  }
+
   window.updateForm = function () {
     if (typeSel.value === 'شفهي') {
       fineRow.style.display = 'none';
@@ -66,6 +78,7 @@
     if (typeVal === 'شفهي') {
       generatedText = 
 `*** ▬▬▬ ﷽ ▬▬
+
 \`\`\`diff
 
 -الموضوع : انذار شفهي
@@ -75,29 +88,31 @@
  
 اولاً : انذار شفهي
 \`\`\`
-
 <@${pid}>  
 
 \`\`\`وذلك بسبب : ${reason}\`\`\`
-
-
 \` توقيع واعتماد : \`  <@${apprv}>   
 
 \` يرسل الاصل الى : \` <@&1404535885864632340>***`;
     } else {
       if (typeVal === 'أول') {
-        title = 'انذار أول';
+        title = 'انذار وظيفي';
         firstLi = 'انذار وظيفي أول';
       } else if (typeVal === 'ثاني') {
-        title = 'انذار ثاني';
+        title = 'انذار وظيفي';
         firstLi = 'انذار وظيفي ثاني';
       } else if (typeVal === 'نهائي') {
         title = 'انذار نهائي';
         firstLi = 'انذار نهائي بالفصل';
+      } else if (typeVal === 'غرامة مالية بدون إنذار') {
+        title = 'غرامة مالية';
+        firstLi = 'غرامة مالية';
       }
 
-      generatedText = 
+      if (typeVal === 'غرامة مالية بدون إنذار') {
+        generatedText = 
 `*** ▬▬▬ ﷽ ▬▬
+
 \`\`\`diff
 
 -الموضوع : ${title}
@@ -105,19 +120,36 @@
 \`\`\`cs
 # بعد الاطلاع على نظام المخالفات والعقوبات الصادر من ادارة الهلال الاحمر قررنا مايلي 
  
-اولاً : ${firstLi}
-ثانياً:غرامه مالية قدرها ${fine} تسلم الى خزينة الهلال الاحمر
+أولًا: غرامة مالية بقيمة ${fine} تسلم الى خزينة الهلال الأحمر
 \`\`\`
-
 <@${pid}>  
 
 \`\`\`وذلك بسبب : ${reason}\`\`\`
-
-\` ملاحظه : \`  [ يرجى فتح تكت تواصل مع الشؤون الإدارية لتسديد الغرامة](https://ptb.discord.com/channels/1404512396923375696/1404536350614491238/1466234198389035257) 
+\` ملاحظه : \`  [يرجى فتح تكت تواصل مع الشؤون الإدارية لتسديد الغرامة](https://ptb.discord.com/channels/1404512396923375696/1404536350614491238/1466234198389035257) 
 
 \` توقيع واعتماد :\`  <@${apprv}>   
 
-\` يرسل الاصل الى : \`  <@&1404535885864632340>***`;
+\` يرسل الاصل الى :\`  <@&1404535885864632340>***`;
+      } else {
+        generatedText = 
+`*** ▬▬▬ ﷽ ▬▬
+
+\`\`\`diff
+-الموضوع : ${title}
+\`\`\`
+\`\`\`cs
+# بعد الاطلاع على نظام المخالفات والعقوبات الصادر من ادارة الهلال الاحمر قررنا مايلي 
+ 
+اولاً : ${firstLi}
+ثانياً: غرامة مالية قدرها ${fine} تسلم الى خزينة الهلال الأحمر
+\`\`\`
+<@${pid}>  
+
+\`\`\`وذلك بسبب : ${reason}\`\`\`
+\` توقيع واعتماد : \`  <@${apprv}>   
+
+\` يرسل الاصل الى : \` <@&1404535885864632340>***`;
+      }
     }
 
     // Output

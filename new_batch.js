@@ -54,6 +54,13 @@
     });
   }
 
+  function normalizeDiscordId(raw) {
+    const id = (raw || '').toString().trim();
+    if (/^<@.+>$/.test(id) || id.includes('<@')) return id;
+    const clean = id.replace(/^[{<\s]+|[}>\s]+$/g, '');
+    return `<@${clean}>`;
+  }
+
   window.issueBatch = function () {
     const errs = [];
     
@@ -71,7 +78,7 @@
     }
     errorEl.classList.remove('visible');
 
-    let idsMapped = paramedicsStore.map(id => `<@${id}>`).join('\n');
+    const idsMapped = paramedicsStore.map(normalizeDiscordId).join('\n');
 
     generatedText = 
 `**▬▬▬ ﷽ ▬▬▬
