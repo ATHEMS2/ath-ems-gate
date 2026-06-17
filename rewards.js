@@ -27,6 +27,13 @@
     });
   }
 
+  function normalizeDiscordId(raw) {
+    const id = (raw || '').toString().trim();
+    if (/^<@.+>$/.test(id) || id.includes('<@')) return id;
+    const clean = id.replace(/^[{<\s]+|[}>\s]+$/g, '');
+    return `<@${clean}>`;
+  }
+
   window.updateForm = function () {
     if (typeSel.value === 'شفهي') {
       fineRow.style.display = 'none';
@@ -48,8 +55,8 @@
       fine = Number(fine.replace(/,/g, '')).toLocaleString('en-US');
     }
 
-    const pid      = paramId.value.trim();
-    const apprv    = approverId.value.trim();
+    const pid      = normalizeDiscordId(paramId.value);
+    const apprv    = normalizeDiscordId(approverId.value);
 
     if (!reason) errs.push('• السبب مطلوب');
     if (!pid)    errs.push('• معرّف المسعف مطلوب');
