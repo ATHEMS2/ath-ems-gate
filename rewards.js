@@ -29,9 +29,10 @@
 
   function normalizeDiscordId(raw) {
     const id = (raw || '').toString().trim();
-    if (/^<@.+>$/.test(id) || id.includes('<@')) return id;
-    const clean = id.replace(/^[{<\s]+|[}>\s]+$/g, '');
-    return `<@${clean}>`;
+    if (!id) return '';
+
+    const digits = id.match(/(\d{17,19})/);
+    return digits ? digits[1] : '';
   }
 
   window.updateForm = function () {
