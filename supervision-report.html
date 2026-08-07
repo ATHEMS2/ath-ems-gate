@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>استخراج تقرير الإشراف | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="reports-extra.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" /></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <div class="lv-card-header">
+      <div class="lv-header-right">
+        <a href="field-reports.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">📋</span>
+        <h1 class="lv-header-title">استخراج تقرير الإشراف</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <div class="checker-body">
+
+      <label class="lv-label">الإشراف العام:</label>
+      <div class="mention-group" id="group-general">
+        <div class="mention-row">
+          <input type="text" class="lv-input mention-input" placeholder="آيدي الشخص">
+          <button type="button" class="remove-row-btn" onclick="removeMentionRow(this)">×</button>
+        </div>
+      </div>
+      <button type="button" class="add-row-btn" onclick="addMentionRow('group-general')">+ إضافة مشرف عام</button>
+
+      <label class="lv-label">الإشراف الميداني:</label>
+      <div class="mention-group" id="group-field">
+        <div class="mention-row">
+          <input type="text" class="lv-input mention-input" placeholder="آيدي الشخص">
+          <button type="button" class="remove-row-btn" onclick="removeMentionRow(this)">×</button>
+        </div>
+      </div>
+      <button type="button" class="add-row-btn" onclick="addMentionRow('group-field')">+ إضافة مشرف ميداني</button>
+
+      <label class="lv-label" for="responsibleInput">المسؤول الميداني:</label>
+      <input type="text" id="responsibleInput" class="lv-input" placeholder="آيدي المسؤول الميداني ( لا يمكن تركه فارغًا )">
+
+      <div class="lv-fields-row" style="margin-top:1rem;">
+        <div class="lv-field">
+          <label class="lv-label">رابط تقرير نائب العمليات الاول لمنطقة لوس سانتوس:</label>
+          <input type="text" id="link1" class="lv-input" placeholder="https://...">
+        </div>
+        <div class="lv-field">
+          <label class="lv-label">رابط تقرير نائب العمليات الثاني لمنطقة لوس سانتوس:</label>
+          <input type="text" id="link2" class="lv-input" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="lv-fields-row">
+        <div class="lv-field">
+          <label class="lv-label">رابط تقرير نائب العمليات الاول لمنطقتي ساندي وبوليتو:</label>
+          <input type="text" id="link3" class="lv-input" placeholder="https://...">
+        </div>
+        <div class="lv-field">
+          <label class="lv-label">رابط تقرير نائب العمليات الثاني لمنطقتي ساندي وبوليتو:</label>
+          <input type="text" id="link4" class="lv-input" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="lv-fields-row">
+        <div class="lv-field">
+          <label class="lv-label">سبب نزول التقرير متأخرًا أو مبكرًا:</label>
+          <input type="text" id="reasonLate" class="lv-input" placeholder="لا يوجد">
+        </div>
+        <div class="lv-field">
+          <label class="lv-label">رابط ملاحظة تصحيح التقرير:</label>
+          <input type="text" id="correctionLink" class="lv-input" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="lv-actions">
+        <button class="lv-btn lv-btn-issue" onclick="generateSupervisionReport()">
+          <span>🖨️</span><span>استخراج تقرير الإشراف</span>
+        </button>
+        <button class="lv-btn lv-btn-copy" onclick="copyResult()">
+          <span>📋</span><span>نسخ تقرير الإشراف</span>
+        </button>
+      </div>
+
+      <div id="message" class="lv-error"></div>
+    </div>
+
+  </div><!-- /lv-card -->
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card-wrap">
+    <div class="lv-output-header">
+      <span>📤 نتيجة تقرير الإشراف</span>
+      <button class="lv-output-copy-btn" onclick="copyResult()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="resultBox"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner"><p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p></div>
+</footer>
+
+<script src="app.js"></script>
+<script src="supervision.js"></script>
+</body>
+</html>

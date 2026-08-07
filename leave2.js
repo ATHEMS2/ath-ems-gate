@@ -45,7 +45,9 @@
     return `${h} ساعة و ${m} دقيقة`;
   }
 
-  /* ── LEAVE TEMPLATE ── */
+  /* ── LEAVE TEMPLATES (one per dropdown mode) ──
+     All 4 start out identical to the normal template.
+     Edit each one independently to customize its wording. */
   window.HLAL_LEAVE_DEFAULT_TEMPLATE = `***﷽
 
 \` الموضوع :\` إجازة داخلية
@@ -64,12 +66,56 @@
 
 \` يرسل الاصل الى :\` <@&1404535885864632340>***`;
 
+ window.HLAL_LEAVE_MERCHANT_TEMPLATE = `***﷽
+
+\` الموضوع :\` إجازة داخلية ( تاجر )
+
+\` للمسعف المحترم :\` <@{{paramId}}>
+
+\` مدة الإجازة :\`  {{duration}} 
+
+\` الرصيد المتبقي :\`  إجازة تاجر
+
+\` من الساعة :\` {{startTime}}
+
+\` إلى الساعة :\` {{endTime}}
+
+[يرجى قراءة قوانين الإجازات قبل تغيير الوظيفة](https://discord.com/channels/1404512396923375696/1404536315537526794/1509034080019288104)
+
+\` يرسل الاصل الى :\` <@&1404535885864632340>***`;
+
+  window.HLAL_LEAVE_OFFDUTY_TEMPLATE = `***﷽
+
+\` الموضوع :\` إجازة داخلية ( خارج شفت )
+
+\` للمسعف المحترم :\` <@{{paramId}}>
+
+\` مدة الإجازة :\`  {{duration}} 
+
+\` الرصيد المتبقي :\`  خارج شفت
+
+\` من الساعة :\` {{startTime}}
+
+\` إلى الساعة :\` {{endTime}}
+
+[يرجى قراءة قوانين الإجازات قبل تغيير الوظيفة](https://discord.com/channels/1404512396923375696/1404536315537526794/1509034080019288104)
+
+\` يرسل الاصل الى :\` <@&1404535885864632340>***`;
+
+  window.HLAL_LEAVE_TEMPLATES = {
+    normal:   window.HLAL_LEAVE_DEFAULT_TEMPLATE,
+    merchant: window.HLAL_LEAVE_MERCHANT_TEMPLATE,
+    offduty: window.HLAL_LEAVE_OFFDUTY_TEMPLATE,
+  };
+
   /* ── Grab elements ── */
   const startDisplay   = document.getElementById('start-time-display');
   const startOverride  = document.getElementById('start-override');
   const durationInput  = document.getElementById('duration');
   const balanceInput   = document.getElementById('balance');
   const remainingEl    = document.getElementById('remaining-display');
+  const leaveTypeSelect = document.getElementById('leave-type');
+  const balanceRow     = document.getElementById('balance-row');
 
   /* ── Tick: update start time display ── */
   function tick() {
@@ -93,11 +139,28 @@
     updateRemaining();
   });
 
+  function updateLeaveTypeUI() {
+    const isNormalLeave = leaveTypeSelect && leaveTypeSelect.value === 'normal';
+    if (balanceRow) {
+      balanceRow.style.display = isNormalLeave ? '' : 'none';
+    }
+    if (balanceInput) {
+      balanceInput.disabled = !isNormalLeave;
+    }
+    if (!isNormalLeave) {
+      remainingEl.textContent = '—';
+      remainingEl.className = 'lv-auto-val';
+    } else {
+      updateRemaining();
+    }
+  }
+
   /* ── Live remaining balance calc ── */
   function updateRemaining() {
     const dur = parseFloat(durationInput.value);
     const bal = parseFloat(balanceInput.value);
-    if (!isNaN(dur) && !isNaN(bal)) {
+    const isNormalLeave = leaveTypeSelect && leaveTypeSelect.value === 'normal';
+    if (isNormalLeave && !isNaN(dur) && !isNaN(bal)) {
       const rem = bal - dur;
       remainingEl.textContent = rem % 1 === 0 ? rem : rem.toFixed(1);
       remainingEl.className = 'lv-auto-val' + (rem < 0 ? ' negative' : '');
@@ -109,6 +172,10 @@
 
   durationInput.addEventListener('input', updateRemaining);
   balanceInput.addEventListener('input', updateRemaining);
+  if (leaveTypeSelect) {
+    leaveTypeSelect.addEventListener('change', updateLeaveTypeUI);
+  }
+  updateLeaveTypeUI();
 
   /* ── Resolve start date ── */
   function getStartDate() {
@@ -145,13 +212,15 @@
   window.issueLeave = function () {
     const paramId  = document.getElementById('paramedic-id').value.trim();
     const dur      = parseFloat(durationInput.value);
-    const bal      = parseFloat(balanceInput.value);
+    const leaveType = document.getElementById('leave-type').value;
+    const isNormalLeave = leaveType === 'normal';
+    const bal      = isNormalLeave ? parseFloat(balanceInput.value) : NaN;
     const errorEl  = document.getElementById('lv-error');
 
     const errs = [];
     if (!paramId)              errs.push('• معرّف المسعف مطلوب');
     if (isNaN(dur) || dur <= 0) errs.push('• المدة يجب أن تكون أكبر من صفر');
-    if (isNaN(bal))            errs.push('• الرصيد الحالي مطلوب');
+    if (isNormalLeave && isNaN(bal)) errs.push('• الرصيد الحالي مطلوب');
     const confirmBox = document.getElementById('confirm-register');
     if (confirmBox && !confirmBox.checked) errs.push('• يرجى تأكيد تسجيل الإجازة بجدول الإجازات');
 
@@ -164,12 +233,12 @@
 
     const startDate = getStartDate();
     const endDate   = addHours(startDate, dur);
-    const remaining = bal - dur;
-    const remStr    = remaining % 1 === 0 ? `${remaining}` : `${remaining.toFixed(1)}`;
+    const remaining = isNormalLeave && !isNaN(bal) ? bal - dur : null;
+    const remStr    = remaining === null ? '—' : (remaining % 1 === 0 ? `${remaining}` : `${remaining.toFixed(1)}`);
 
     const template = typeof getLeaveTemplate === 'function'
       ? getLeaveTemplate()
-      : window.HLAL_LEAVE_DEFAULT_TEMPLATE;
+      : (window.HLAL_LEAVE_TEMPLATES[leaveType] || window.HLAL_LEAVE_DEFAULT_TEMPLATE);
 
     generatedText = typeof renderLeaveTemplate === 'function'
       ? renderLeaveTemplate(template, {

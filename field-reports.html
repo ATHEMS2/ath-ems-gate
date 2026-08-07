@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="تقارير الإشراف الميداني - بوابة الهلال الأحمر"/>
+  <title>تقارير الإشراف الميداني | الهلال الأحمر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="pages.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="logo-icon">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <span class="brand-title">شؤون الهلال الأحمر</span>
+    </div>
+    <div class="navbar-actions">
+      <button id="theme-toggle" class="theme-btn" aria-label="تبديل الوضع">
+        <span class="theme-icon dark-icon">🌙</span>
+        <span class="theme-icon light-icon">☀️</span>
+        <span class="theme-label dark-label">الوضع الفاتح</span>
+        <span class="theme-label light-label">الوضع الداكن</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-hero" style="background: linear-gradient(135deg, rgba(204, 0, 0, 0.15) 0%, rgba(255, 0, 0, 0.05) 100%);">
+    <div class="page-hero-inner">
+      <a href="index.html" class="back-btn">
+        <span class="back-arrow">→</span>
+        <span>رجوع</span>
+      </a>
+      <div class="page-hero-text">
+        <div class="page-breadcrumb">الرئيسية / تقارير الإشراف الميداني</div>
+        <h1 class="page-title">
+          تقارير <span class="accent">الإشراف الميداني</span>
+        </h1>
+        <p class="page-sub">تصحيح تقارير العمليات واستخراج تقارير الإشراف بشكل تلقائي</p>
+      </div>
+    </div>
+    <div class="page-hero-deco"></div>
+  </div>
+
+  <!-- SECTIONS GRID -->
+  <main class="page-main">
+    <div class="sections-grid">
+
+      <!-- تصحيح تقارير العمليات -->
+      <a href="report-checker.html" class="section-card" id="sc-checker">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="32" height="32" rx="6" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M15 24 L21 30 L33 16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge">متاح الآن</div>
+          <h2 class="sc-title">تصحيح تقارير العمليات</h2>
+          <p class="sc-desc">تحقق من صحة تنسيق تقرير العمليات، واكتشف الأسماء أو الرموز المكررة والأقسام الفارغة قبل إرساله</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+      <!-- استخراج تقرير الإشراف -->
+      <a href="supervision-report.html" class="section-card" id="sc-supervision">
+        <div class="sc-glow"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="6" width="28" height="36" rx="4" stroke="currentColor" stroke-width="2.5"/>
+              <rect x="18" y="3" width="12" height="7" rx="2" fill="currentColor"/>
+              <path d="M16 21 H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 28 H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 35 H26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sc-badge">متاح الآن</div>
+          <h2 class="sc-title">استخراج تقرير الإشراف</h2>
+          <p class="sc-desc">حوّل تقرير العمليات إلى تقرير إشراف جاهز للنسخ، مع الوقت والروابط تلقائيًا</p>
+          <div class="sc-arrow">←</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.png" alt="شعار الهلال" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
+      <p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر — جميع الحقوق محفوظة لقطاع الهلال الاحمر التابع لمقاطعة العاذرية</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

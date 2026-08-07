@@ -122,6 +122,12 @@ body {
   border-right: 1px solid var(--border-card) !important;
 }
 
+.lv-field-type {
+  background: var(--red-glow-soft);
+  border-right: 1px solid var(--border-card) !important;
+}
+.lv-field-type .lv-label { color: var(--text-accent); }
+
 /* Label */
 .lv-label {
   display: flex;
